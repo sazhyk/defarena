@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block head_title %}
+    {% if request.user.is_authenticated and request.user.is_active %}
+        {% trans "Hello" %} {{ request.user.username }}
+        {% else %}
+        {% trans "Welcome" %}!
+    {% endif %}
+{% endblock %}
+
+    {% block extra_head %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+    {% endblock %}
+
+    <body>
+    {% block body %}
+
+    {% block jumbotron %}
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-5 logo-left">
+                        <p class="logo-text">Капсула</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2 logo-center">
+                        <img src="{% static 'img/logo.png' %}" class="logo-img" alt="">
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-5 logo-right">
+                        <p class="logo-text">Времени</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block content %}
+        <div class="container index-main">
+            <div class="row">
+            {% block login_form %}
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                {% if request.user.is_authenticated %}
+                    <p>Вы авторизованы как {{ request.user }}</p>
+                    <p><a class="btn btn-success" href="">Перейти в личный кабинет</a> </p>
+                    <p>Или войти как <a class="" href="{% url 'userena_signout' %}">другой пользователь</a> </p>
+                    {% else %}
+                    <form class="login" method="POST" action="{% url 'home_page' %}">
+                    {% csrf_token %}
+                    {% bootstrap_form form label='horizontal' %}
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                        <p class="login-form-btn-register"><a href="{% url 'register' %}" class="btn btn-success">Регистрация</a></p>
+                        <p class="login-form-btn-login"><button type="submit" class="btn btn-primary">{% trans "Sign In" %}</button></p>
+                        <a class="button secondaryAction" href="{% url 'userena_password_reset' %}">{% trans "Forgot Password?" %}</a>
+                    </form>
+                {% endif %}
+                </div>
+            {% endblock %}
+        {% block static_content %}
+                <div class="col-xs-12 col-sm-6 col-md-8">
+                        <h2>Heading</h2>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                        <div class="site-preview" id="site-preview">
+                            <img src="{% static 'img/prev-site.jpg' %}" alt="page1" class="img-thumbnail" tabindex="0">
+                            <img src="{% static 'img/prev-site.jpg' %}" alt="page1" class="img-thumbnail" tabindex="0">
+                            <img src="{% static 'img/prev-site.jpg' %}" alt="page1" class="img-thumbnail" tabindex="0">
+                            <div></div>
+                        </div>
+                    </div>
+        {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block fooler %}
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="ftr-social-container">
+                            <h4>Мы в соцсетях</h4>
+                            <div class="ftr-social-icon">
+                                <span class="ftr-social-fb">
+                                    <a href="https://www.facebook.com/" class="ftr-social-link" target="_blank" title="Страница проекта в Facebook"></a>
+                                </span>
+                                <span class="ftr-social-tw">
+                                    <a href="https://twitter.com/" class="ftr-social-link" target="_blank" title="Страница проекта в Twitter"></a>
+                                </span>
+                                <span class="ftr-social-vk">
+                                    <a href="https://vk.com/" class="ftr-social-link" target="_blank" title="Страница проекта в ВКонтакте"></a>
+                                </span>
+                                <span class="ftr-social-ok">
+                                    <a href="http://ok.ru/" class="ftr-social-link" target="_blank" title="Страница проекта в Одноклассниках"></a>
+                                </span>
+                                <span class="ftr-social-yt">
+                                    <a href="https://www.youtube.com/" class="ftr-social-link" target="_blank" title="Канал проекта на Yuotube"></a>
+                                </span>
+                                <span class="ftr-social-in">
+                                    <a href="https://www.instagram.com/" class="ftr-social-link" target="_blank" title="Страница проекта в Instagram"></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-8">
+                        <div class="ftr-copy-container">
+                        <span class="ftr-copy-link">
+                        <a href="">Русский</a>
+                        </span>
+                        <span class="ftr-copy-link">
+                            <a href="about/">О проекте</a>
+                        </span>
+                        <span class="ftr-copy-link">
+                            <a href="policies/">Условия использования</a>
+                        </span>
+                        <span class="ftr-copy-link">
+                            <a href="privacy/">Политика конфиденциальности</a>
+                        </span>
+                        <span class="ftr-copy-link">
+                            <a href="help/">Помощь</a>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
+
+    {% endblock %}
+
+    {% block extra_body %}
+        <script src="{% bootstrap_jquery_url %}"></script>
+        {% bootstrap_javascript %}
+    {% endblock %}
