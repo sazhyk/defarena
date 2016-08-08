@@ -24,7 +24,8 @@ from accounts import views as mt_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('userena.urls')),
+    url(r'^accounts/', include('accounts.userena.urls')),
+    # url(r'^accounts/', include('userena.urls')),
     # url(r'^register/$', mt_views.register, name="register"),
     # url(r'^$', mt_views.home, name="home_page"),
     url(r'^register/$',

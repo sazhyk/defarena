@@ -1,10 +1,10 @@
-{% extends "base_account.html" %}
+{% extends "profile.html" %}
 
 {% load staticfiles %}
 {% load bootstrap3 %}
 {% load i18n %}
 
-{% block title %}{% blocktrans %}Profile.{% endblocktrans %}{% endblock %}
+{% block title %}{% trans "Email verification" %}{% endblock %}
 
     {% block extra_head %}
         {% bootstrap_css %}
@@ -60,42 +60,9 @@
     {% block content %}
     <div class="container index-main">
         <div class="row">
-            <div class="white-box">
-
-                <div id="details">
-                {% block profile_details %}
-                    <img class="mugshot" src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
-                    <dl>
-                    {% block profile_definition_list %}
-                    {% if profile.user.get_full_name %}
-                        <dt>{% trans "Name" %}</dt>
-                        <dd>{{ profile.user.get_full_name }}</dd>
-                    {% endif %}
-                    {% if profile.user.email and not hide_email %}
-                        <dt>{% trans "Email" %}</dt>
-                        <dd>{{ profile.user.email }}</dd>
-                    {% endif %}
-                    {% if profile.age %}
-                        <dt>{% trans "Age" %}</dt>
-                        <dd>{{ profile.age }}</dd>
-                    {% endif %}
-                    {% if profile.website %}
-                        <dt>{% trans "Website" %}</dt>
-                        <dd>{{ profile.website|urlize }}</dd>
-                    {% endif %}
-                    {% if profile.location %}
-                        <dt>{% trans "Location" %}</dt>
-                        <dd>{{ profile.location }}</dd>
-                    {% endif %}
-                    {% if profile.about_me %}
-                        <dt>{% trans "About me" %}</dt>
-                        <dd>{{ profile.about_me }}</dd>
-                    {% endif %}
-                    {% endblock %}
-                    </dl>
-                {% endblock %}
-                </div>
-
+            <div class="col-md-8 col-sm-offset-2">
+                <p>{% blocktrans with viewed_user.userena_signup.email_unconfirmed as email %}You have received an email at {{ email }}.{% endblocktrans %}</p>
+                <p>{% blocktrans with viewed_user.username as username %}To associate this email address with your account ({{ username }}) click on the link provided in this email.{% endblocktrans %}</p>
             </div>
         </div>
     </div>

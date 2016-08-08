@@ -131,11 +131,12 @@ ANONYMOUS_USER_ID = -1
 
 AUTH_PROFILE_MODULE = 'accounts.MyProfile'
 
-USERENA_SIGNIN_REDIRECT_URL = '/accounts/%(username)s/'
+USERENA_SIGNIN_REDIRECT_URL = '/accounts/id-%(username)s/'
 LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
 
 USERENA_ACTIVATION_DAYS = 3
+USERENA_ACTIVATION_NOTIFY_DAYS = 1
 
 USERENA_WITHOUT_USERNAMES = True
 
