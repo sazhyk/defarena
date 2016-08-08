@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block title %}{% trans "Reset password" %}{% endblock %}
+
+    {% block extra_head %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+    {% endblock %}
+
+    <body>
+    {% block body %}
+
+    {% block jumbotron %}
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-5 logo-left">
+                        <p class="logo-text">Капсула</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2 logo-center">
+                        <img src="{% static 'img/logo.png' %}" class="logo-img" alt="">
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-5 logo-right">
+                        <p class="logo-text">Времени</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block content %}
+    <div class="container index-main">
+        <div class="row">
+            <div class="col-md-6 col-sm-offset-3">
+                <p>{% trans "Thank you for signing up with us!" %}</p>
+                {% if userena_activation_required %}
+                <p>{% blocktrans %}You have been sent an e-mail with an activation link to the supplied email.{% endblocktrans %}</p>
+                <p>{% blocktrans %}We will store your signup information for {{ userena_activation_days }} days on our server. {% endblocktrans %}</p>
+                {% else  %}
+                <p>{% blocktrans %}You can now use the supplied credentials to signin.{% endblocktrans %}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block fooler %}
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="ftr-social-container">
+                            <h4>Мы в соцсетях</h4>
+                            <div class="ftr-social-icon">
+                                <span class="ftr-social-fb">
+                                    <a href="https://www.facebook.com/" class="ftr-social-link" target="_blank" title="Страница проекта в Facebook"></a>
+                                </span>
+                                <span class="ftr-social-tw">
+                                    <a href="https://twitter.com/" class="ftr-social-link" target="_blank" title="Страница проекта в Twitter"></a>
+                                </span>
+                                <span class="ftr-social-vk">
+                                    <a href="https://vk.com/" class="ftr-social-link" target="_blank" title="Страница проекта в ВКонтакте"></a>
+                                </span>
+                                <span class="ftr-social-ok">
+                                    <a href="http://ok.ru/" class="ftr-social-link" target="_blank" title="Страница проекта в Одноклассниках"></a>
+                                </span>
+                                <span class="ftr-social-yt">
+                                    <a href="https://www.youtube.com/" class="ftr-social-link" target="_blank" title="Канал проекта на Yuotube"></a>
+                                </span>
+                                <span class="ftr-social-in">
+                                    <a href="https://www.instagram.com/" class="ftr-social-link" target="_blank" title="Страница проекта в Instagram"></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-8">
+                        <div class="ftr-copy-container">
+                        <span class="ftr-copy-link">
+                        <a href="">Русский</a>
+                        </span>
+                        <span class="ftr-copy-link">
+                            <a href="about/">О проекте</a>
+                        </span>
+                        <span class="ftr-copy-link">
+                            <a href="policies/">Условия использования</a>
+                        </span>
+                        <span class="ftr-copy-link">
+                            <a href="privacy/">Политика конфиденциальности</a>
+                        </span>
+                        <span class="ftr-copy-link">
+                            <a href="help/">Помощь</a>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
+
+    {% endblock %}
+
+    {% block extra_body %}
+        <script src="{% bootstrap_jquery_url %}"></script>
+        {% bootstrap_javascript %}
+    {% endblock %}

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from userena.forms import SignupForm, AuthenticationForm
+from .forms import FileUploadForm
 
 
 def home(request):
@@ -15,3 +16,14 @@ def register(request):
         'signup_form': SignupForm
     }
     return render(request, 'register.html', context)
+
+
+def new_capsule(request):
+
+    form = FileUploadForm()
+
+    context = {
+        "form": form
+    }
+
+    return render(request, 'profile.html', context)

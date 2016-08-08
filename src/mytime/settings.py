@@ -73,6 +73,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, "templates"),
             os.path.join(BASE_DIR, "templates", "userena"),
             os.path.join(BASE_DIR, "templates", "accounts"),
+            os.path.join(BASE_DIR, "templates", "fileupload"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,25 +131,23 @@ AUTHENTICATION_BACKENDS = (
 ANONYMOUS_USER_ID = -1
 
 AUTH_PROFILE_MODULE = 'accounts.MyProfile'
-
 USERENA_SIGNIN_REDIRECT_URL = '/accounts/id-%(username)s/'
-LOGIN_URL = '/accounts/signin/'
-LOGOUT_URL = '/accounts/signout/'
-
+LOGIN_URL = '/'
+LOGOUT_URL = '/logout/'
 USERENA_ACTIVATION_DAYS = 3
 USERENA_ACTIVATION_NOTIFY_DAYS = 1
-
 USERENA_WITHOUT_USERNAMES = True
-
 USERENA_DEFAULT_PRIVACY = 'closed'
-
 USERENA_PROFILE_DETAIL_TEMPLATE = 'accounts/profile.html'
+USERENA_MUGSHOT_PATH = 'mugshots/%(username)s/'
+
+
+# I18n SETTINGS
 
 LANGUAGES = (
     ('ru', 'Russian'),
     ('uk', 'Ukrainian'),
 )
-
 LOCALE_PATHS = (
     'locale',
     os.path.join(BASE_DIR, 'locale'),
@@ -182,7 +181,7 @@ DEFAULT_FROM_EMAIL = 'mytime100@mail.ru'
 
 # Django Sites SETTINGS
 
-SITE_ID = 2
+SITE_ID = 1
 
 
 # Botstrap3 SETTINGS
@@ -219,4 +218,9 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media_root")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+# FileUpload SETTINGS
+
+UPLOAD_PATH = os.path.join(os.path.dirname(BASE_DIR), "caps")
