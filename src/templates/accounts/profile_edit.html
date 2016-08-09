@@ -68,7 +68,7 @@
                     <fieldset>
                         <h3>{% trans "Edit Profile" %}</h3>
                         {% for fields in form %}
-                            {% bootstrap_field fields exclude='privacy'%}
+                            {% bootstrap_field fields %}
                         {% endfor %}
                     </fieldset>
                     <input class="btn btn-success center-block" type="submit" value="{% trans "Save changes" %}" />
