@@ -42,5 +42,4 @@ urlpatterns = [
         {'template_name': "home.html"},
         name='home_page'
         ),
-    url(r'^test/$', mt_views.new_capsule)
 ]

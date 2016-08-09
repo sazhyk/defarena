@@ -1,4 +1,4 @@
-{% extends "profile.html" %}
+{% extends "base.html" %}
 
 {% load staticfiles %}
 {% load bootstrap3 %}
@@ -63,13 +63,15 @@
     <div class="container index-main">
         <div class="row">
             <div class="col-md-6 col-sm-offset-3">
-                <form action="" enctype="multipart/form-data" method="post">
+                <form action="" enctype="multipart/form-data" method="post" class="">
                     {% csrf_token %}
                     <fieldset>
-                        <legend>{% trans "Edit Profile" %}</legend>
-                        {% bootstrap_form form %}
+                        <h3>{% trans "Edit Profile" %}</h3>
+                        {% for fields in form %}
+                            {% bootstrap_field fields exclude='privacy'%}
+                        {% endfor %}
                     </fieldset>
-                    <input class="btn btn-primary" type="submit" value="{% trans "Save changes" %}" />
+                    <input class="btn btn-success center-block" type="submit" value="{% trans "Save changes" %}" />
                 </form>
             </div>
         </div>

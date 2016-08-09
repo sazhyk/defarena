@@ -59,30 +59,8 @@
                             {% endif %}
                             <p class="login-form-btn-register"><button type="submit" class="btn btn-success btn-register">{% trans "Sign Up" %}</button></p>
                             <p class="help-block agree-help">Нажимая кнопку <strong>{% trans "Sign Up" %}</strong> вы соглашаетесь с <a href=""><em>условиями использования</em></a> сервиса</p>
-                            <p class="help-block agree-help">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+                            <p class="help-block agree-help">{% blocktrans %}Already have an account? Then please{% endblocktrans %} <a href="{% url 'home_page' %}">sign in</a>.</p>
                         </form>
-{#                        <form action="" method="post">#}
-{#                        {% csrf_token %}#}
-{#                            <fieldset>#}
-{#                            <legend>{% trans "Signup" %}</legend>#}
-{#                            {{ form.non_field_errors }}#}
-{#                            {% for field in form %}#}
-{#                            {{ field.errors }}#}
-{#                            {% comment %} Displaying checkboxes differently {% endcomment %}#}
-{#                            {% if field.name == 'tos' %}#}
-{#                                <p class="checkbox">#}
-{#                                <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>#}
-{#                                </p>#}
-{#                                {% else %}#}
-{#                                <p>#}
-{#                                {{ field.label_tag }}#}
-{#                                {{ field }}#}
-{#                                </p>#}
-{#                            {% endif %}#}
-{#                            {% endfor %}#}
-{#                            </fieldset>#}
-{#                        <input type="submit" value="{% trans "Signup"%}" />#}
-{#                        </form>#}
                     </div>
                 </div>
             {% endblock %}
