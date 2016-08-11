@@ -1,0 +1,47 @@
+.profile-details-rows {
+    margin-bottom: 15px;
+    color: #5f5f5f;
+}
+
+.profile-details-rows:last-child {
+    margin-bottom: 0;
+}
+
+.profile-details-rows:nth-child(2) {
+    margin-top: 15px;
+}
+
+.profile-details > .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.profile-details-rows > .profile-details-field {
+    display: block;
+}
+
+@media (max-width: 480px) {
+    .profile-details {
+        display: none;
+    }
+}
+@media (min-width: 480px) {
+    .profile-details {
+        display: none;
+    }
+}
+@media (min-width: 768px) {
+    .profile-details {
+        display: block;
+    }
+}
+@media (min-width: 992px) {
+    .profile-details {
+        display: block;
+    }
+}
+@media (min-width: 1200px) {
+    .profile-details {
+        display: block;
+    }
+}

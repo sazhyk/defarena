@@ -19,6 +19,9 @@ from django.contrib import admin
 from userena import views as userena_views
 from userena import settings as userena_settings
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.userena.urls')),
@@ -37,4 +40,4 @@ urlpatterns = [
         {'template_name': "home.html"},
         name='home_page'
         ),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
